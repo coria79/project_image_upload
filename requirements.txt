@@ -1,0 +1,34 @@
+# --- Core Dependencies ---
+# These are the main libraries required for the project.
+
+Django==5.1.4  # Web framework
+asgiref==3.8.1  # ASGI support (for Django Channels, etc.)
+python-dotenv==1.0.1  # For loading environment variables from .env file
+
+# --- Cloud Storage ---
+# Libraries for interacting with cloud storage services (e.g., Amazon S3).
+
+boto3==1.35.97  # AWS SDK for Python
+botocore==1.35.97  # Core library for botoc3
+django-storages==1.14.4  # Django storage backend for cloud storage
+s3transfer==0.10.4  # For managing S3 transfers
+awscli==1.36.38  # AWS Command Line Interface (for interacting with AWS services from the terminal)
+
+# --- Image Processing ---
+# Library for image manipulation and processing.
+
+pillow==11.1.0  # Pillow (PIL Fork) for image processing
+
+# --- Utilities ---
+# General utility libraries.
+
+colorama==0.4.6  # For colored terminal output
+docutils==0.16  # For processing documentation
+jmespath==1.0.1  # For querying JSON data
+pyasn1==0.6.1  # For working with ASN.1 data
+python-dateutil==2.9.0.post0  # For working with dates and times
+PyYAML==6.0.2  # For parsing YAML files
+rsa==4.7.2  # For working with RSA keys
+six==1.17.0  # Python 2 and 3 compatibility library
+sqlparse==0.5.3  # For parsing SQL queries
+urllib3==2.3.0  # HTTP library

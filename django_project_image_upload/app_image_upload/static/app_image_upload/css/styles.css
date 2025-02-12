@@ -1,0 +1,151 @@
+/* --- Global Styles --- */
+
+/* Body element */
+body {
+    background-color: black; /* Black background */
+    color: white; /* White text color */
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+}
+
+/* Main container */
+.upload-form {
+    background-color: #1c3434; /* Darker background color for the form container */
+    padding: 15px; /* Add padding to the form container */
+    border: 0.5px solid grey; /* Add a grey border */
+    border-radius: 8px; /* Round the corners of the form container */
+    width: 90%; /* Adjusted for mobile first - width takes most of the screen */
+    margin: 20px auto; /* Center the form container */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+/* Header section */
+.upload-form__header {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the content horizontally */
+}
+
+/* <h1> tag used for page title */
+h1 {
+    font-size: 24px; /* Set the font size */
+    color: white; /* White text color */
+    text-align: center; /* Center the text */
+}
+
+/* Content section */
+.upload-form__content {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the content horizontally */
+}
+
+/* Title */
+.upload-form__title {
+    font-size: 20px; /* Adjusted for mobile */
+    color: white; /* White text color */
+}
+
+/* Form section */
+.upload-form__form {
+    margin-top: 15px; /* Add margin to the top of the form */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center the content */
+    flex-direction: column; /* Arrange items in a column */
+}
+
+/* Button */
+.upload-form__button {
+    background-color: #007bff; /* Blue background color */
+    color: white; /* White text color */
+    padding: 10px 15px; /* Add padding to the button */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Round the corners of the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    width: 100%; /* Full width button on mobile */
+    max-width: 300px; /* Button doesn't grow too large */
+    margin-top: 10px; /* Add margin to the top of the button */
+}
+
+.upload-form__button:hover {
+    background-color: #0056b3; /* Darker blue background color on hover */
+}
+
+/* Messages block */
+.upload-form__messages {
+    margin-top: 15px; /* Add margin to the top of the messages */
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+}
+
+/* Individual message */
+.upload-form__message {
+    color: yellow; /* Yellow text color for messages */
+}
+
+/* Success message block */
+.upload-form__success {
+    margin-top: 20px; /* Add margin to the top of the success message */
+}
+
+/* Success title */
+.upload-form__success-title {
+    color: lightgreen; /* Light green text color for success title */
+}
+
+/* Success URL text */
+.upload-form__success-url {
+    color: white; /* White text color for success URL */
+}
+
+/* Success link */
+.upload-form__success-link {
+    color: cyan; /* Cyan text color for success link */
+}
+
+/* --- Additional empty classes for future styling --- */
+
+/* Reserved for form group styling */
+.upload-form__form-group {
+    /* Reserved for form group styling */
+}
+
+/* Reserved for input fields styling */
+.upload-form__input {
+    /* Reserved for input fields styling */
+}
+
+/* Reserved for footer content */
+.upload-form__footer {
+    /* Reserved for footer content */
+}
+
+/* --- Media Queries for Tablets and Desktops --- */
+
+/* Tablets (Portrait) */
+@media (min-width: 600px) {
+    .upload-form {
+        width: 70%; /* Adjust width for tablets */
+    }
+
+    .upload-form__title {
+        font-size: 26px; /* Larger title for tablets */
+    }
+
+    .upload-form__button {
+        max-width: 400px; /* Button size grows for tablets */
+    }
+}
+
+/* Desktops (Large Screens) */
+@media (min-width: 992px) {
+    .upload-form {
+        width: 50%; /* Adjust width for large screens */
+    }
+
+    .upload-form__title {
+        font-size: 28px; /* Larger title for desktops */
+    }
+
+    .upload-form__button {
+        max-width: 500px; /* Button size grows for desktops */
+    }
+}

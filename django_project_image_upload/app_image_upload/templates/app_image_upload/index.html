@@ -1,0 +1,102 @@
+<!-- app_image_upload/templates/app_image_upload/upload.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Sets the character encoding for the HTML document to UTF-8, 
+     which supports most characters, including special symbols -->
+    <meta charset="UTF-8" />
+
+    <!-- Loads the Bootstrap "Darkly" theme from Bootswatch for consistent styling -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/darkly/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Loads custom CSS for additional project-specific styles -->
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="{% static 'app_image_upload/css/styles.css' %}"
+    />
+
+    <!-- Sets the title displayed on the browser tab -->
+    <title>Upload Image</title>
+
+    <!-- Recommended additional meta tags for better responsiveness and SEO -->
+
+    <!-- Makes the page responsive by setting the viewport to device width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO meta tag for page description -->
+    <meta
+      name="description"
+      content="Upload images and store them securely with this web service."
+    />
+
+    <!-- Author metadata (optional) -->
+    <meta name="author" content="Your Name Here" />
+
+    <!-- Open Graph tags (optional) for better social media sharing -->
+    <meta property="og:title" content="Upload Image Service" />
+    <meta
+      property="og:description"
+      content="Upload images and store them securely with this web service."
+    />
+    <meta property="og:image" content="URL-to-image-preview" />
+    <meta property="og:url" content="https://yourwebsite.com/" />
+
+    <!-- Favicon for better branding (optional) -->
+    <link
+      rel="icon"
+      href="{% static 'app_image_upload/images/favicon.ico' %}"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <div class="upload-form">
+      <div class="upload-form__header">
+        <!-- Title block -->
+        <h1 class="upload-form__title">Upload Image</h1>
+      </div>
+
+      <div class="upload-form__content">
+        <!-- Form block for uploading images -->
+        <form
+          class="upload-form__form"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %} {{ form.as_p }}
+
+          <button type="submit" class="upload-form__button">Upload</button>
+        </form>
+      </div>
+
+      <!-- Messages block to display user notifications -->
+      {% if messages %}
+      <ul class="upload-form__messages">
+        {% for message in messages %}
+        <li class="upload-form__message">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      <!-- Image success block -->
+      {% if image_url %}
+      <div class="upload-form__success">
+        <h3 class="upload-form__success-title">Image uploaded successfully</h3>
+        <p class="upload-form__success-url">
+          Image URL on Amazon S3:
+          <a
+            href="{{ image_url }}"
+            target="_blank"
+            class="upload-form__success-link"
+            >{{ image_url }}</a
+          >
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

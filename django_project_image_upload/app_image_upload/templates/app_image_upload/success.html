@@ -1,11 +1,67 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Imagen Cargada</title>
+    <!-- Sets the character encoding for the HTML document to UTF-8, 
+     which supports most characters, including special symbols -->
+     <meta charset="UTF-8" />
+
+     <!-- Loads the Bootstrap "Darkly" theme from Bootswatch for consistent styling -->
+     <link
+       href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/darkly/bootstrap.min.css"
+       rel="stylesheet"
+     />
+ 
+     <!-- Loads custom CSS for additional project-specific styles -->
+     {% load static %}
+     <link
+       rel="stylesheet"
+       href="{% static 'app_image_upload/css/styles.css' %}"
+     />
+ 
+     <!-- Sets the title displayed on the browser tab -->
+     <title>Upload Image Success</title>
+ 
+     <!-- Recommended additional meta tags for better responsiveness and SEO -->
+ 
+     <!-- Makes the page responsive by setting the viewport to device width -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+     <!-- SEO meta tag for page description -->
+     <meta
+       name="description"
+       content="Success upload images and store them securely with this web service."
+     />
+ 
+     <!-- Author metadata (optional) -->
+     <meta name="author" content="Your Name Here" />
+ 
+     <!-- Open Graph tags (optional) for better social media sharing -->
+     <meta property="og:title" content="Upload Image Service" />
+     <meta
+       property="og:description"
+       content="Upload images and store them securely with this web service."
+     />
+     <meta property="og:image" content="URL-to-image-preview" />
+     <meta property="og:url" content="https://yourwebsite.com/" />
+ 
+     <!-- Favicon for better branding (optional) -->
+     <link
+       rel="icon"
+       href="{% static 'app_image_upload/images/favicon.ico' %}"
+       type="image/x-icon"
+     />
 </head>
 <body>
-    <h1>¡Imagen subida con éxito!</h1>
-    <a href="{% url 'index' %}">Subir otra imagen</a>
+    <div class="upload-form">
+        <!-- Header -->
+        <div class="upload-form__header">
+            <h1>Image uploaded!</h1>
+        </div>
+
+        <!-- Content -->
+        <div class="upload-form__content">
+            <div class="upload-form__form">
+                <a href="{% url 'index' %}">Upload another image</a>
+        </div>
 </body>
 </html>

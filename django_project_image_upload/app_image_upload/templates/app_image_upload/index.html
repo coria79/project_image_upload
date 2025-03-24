@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Set character encoding -->
     <meta charset="UTF-8" />
-
-    <!-- Viewport for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO meta tags -->
     <meta name="description" content="Upload images and store them securely with this web service." />
     <meta name="author" content="Your Name Here" />
-
-    <!-- Open Graph for social media sharing -->
     <meta property="og:title" content="Upload Image Service" />
     <meta property="og:description" content="Upload images and store them securely with this web service." />
     <meta property="og:image" content="URL-to-image-preview" />
     <meta property="og:url" content="https://yourwebsite.com/" />
 
-    <!-- Title -->
     <title>Upload Image</title>
 
-    <!-- Bootstrap Darkly theme -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/darkly/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Load Django static files -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'app_image_upload/css/styles.css' %}" />
     <link rel="icon" href="{% static 'app_image_upload/images/favicon.ico' %}" type="image/x-icon" />
@@ -33,30 +23,47 @@
     <div class="upload-form">
         <!-- Header -->
         <div class="upload-form__header">
-            <h1>Upload An Image</h1>
+            <h1 class="upload-form__title">Upload Image</h1>
         </div>
 
         <!-- Content -->
         <div class="upload-form__content">
-            <div class="upload-form__form">
-                <form method="post" enctype="multipart/form-data" aria-describedby="formHelp sizeHelp">
-                  {% csrf_token %}
-                  <div class="upload-form__group">
+            <form method="POST" enctype="multipart/form-data" class="upload-form__form">
+              <div>
+                {% csrf_token %}
+
+                <!-- Error messages -->
+                
+                <div class="upload-form__group">
+                  <ul class="upload-form__messages" role="alert">
+                    {% if messages %}
+                    {% for message in messages %}
+                      {% if message.tags == 'error' %}
+                        <li class="upload-form__message">{{ message }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+              
+
+                <!-- File input -->
+                <div class="upload-form__group">
                     {{ form.image }}
-                  </div>
+                </div>
 
-                  <div class="upload-form__group">                  
+                <!-- Submit button -->
+                <div class="upload-form__group">
                     <button type="submit" class="upload-form__button">Upload</button>
-                  </div>
+                </div>
 
-                  <div class="upload-form__group">
-                    <small id="formHelp" class="text-muted">Accepted formats: JPEG, JPG, PNG.</small>
-                    <small id="sizeHelp" class="text-muted">Max file size: 2MB.</small>
-                  </div>
-
-                </form>
-
+                <!-- Help text -->
+                <div class="upload-form__group">
+                    <small class="text-muted d-block mb-1">Accepted formats: JPEG, JPG, PNG.</small>
+                    <small class="text-muted">Max file size: 2MB.</small>
+                </div>
               </div>
+            </form>
         </div>
     </div>
 </body>

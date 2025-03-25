@@ -1,65 +1,121 @@
-/* --- Global Styles --- */
+/* -------------------------------------
+   CSS Variables
+   - Site-wide design tokens for color, spacing, radius, and typography
+------------------------------------- */
 
-/* Body element */
+:root {
+    /* Colors */
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --container-bg: #1e2a38;
+    --primary-color: #1e88e5;
+    --primary-color-hover: #1565c0;
+    --primary-gradient-start: #1e88e5;
+    --primary-gradient-end: #42a5f5;
+    --neon-border: #2196f3;
+    --neon-border-hover: #42a5f5;
+    --glow-color: rgba(33, 150, 243, 0.4);
+    --glow-color-hover: rgba(66, 165, 245, 0.6);
+    --warning-color: #fdd835;
+    --success-color: #00c853;
+    --link-color: #81d4fa;
+
+    /* Spacing and sizing */
+    --container-padding: 30px;
+    --container-margin-y: 40px;
+    --input-spacing: 25px;
+    --button-spacing-y: 15px;
+
+    /* Border radius */
+    --border-radius-container: 30px;
+    --border-radius-button: 15px;
+
+    /* Transition */
+    --transition-fast: 0.3s ease-in-out;
+
+    /* Typography scale */
+    --font-size-sm: 13px;
+    --font-size-md: 16px;
+    --font-size-lg: 20px;
+    --font-size-xl: 28px;
+}
+
+
+/* -------------------------------------
+   Global Styles
+   - Base layout
+   - Background and text colors
+   - Basic elements
+------------------------------------- */
+
 body {
-    background-color: #121212; /* Dark background */
-    color: #e0e0e0; /* Soft white text for less strain */
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
-}
-
-/* Main container */
-.upload-form {
-    background-color: #1e2a38; /* Deep bluish background */
-    padding: 15px;
-    border: 0.5px solid #444; /* Softer border */
-    border-radius: 8px;
-    width: 90%;
-    margin: 20px auto;
-    box-sizing: border-box;
-}
-
-/* Header section */
-.upload-form__header {
-    display: flex;
-    justify-content: center;
-}
-
-/* Page title */
-h1 {
-    font-size: 24px;
-    color: #e0e0e0;
-    text-align: center;
 }
 
 a {
     text-decoration: none;
 }
 
+/* Applies to all inputs (including file input) */
 input {
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: var(--input-spacing);
+    margin-bottom: var(--input-spacing);
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
 }
 
-/* Content section */
+/* Smooth transitions for visual elements */
+.upload-form,
+.upload-form__button,
+.upload-form__group input {
+    transition: var(--transition-fast);
+}
+
+
+/* -------------------------------------
+   Layout Containers
+   - Form container structure and spacing
+------------------------------------- */
+
+.upload-form {
+    background-color: var(--container-bg);
+    padding: var(--container-padding);
+    border-radius: var(--border-radius-container);
+    margin: var(--container-margin-y) auto;
+    width: 90%;
+    max-width: 600px;
+
+    /* Neon-style glowing border */
+    box-shadow: 0 0 0 3px var(--neon-border), 0 0 20px var(--glow-color);
+}
+
+.upload-form:hover {
+    /* Stronger glow effect on hover */
+    box-shadow: 0 0 0 3px var(--neon-border-hover), 0 0 30px var(--glow-color-hover);
+}
+
+.upload-form__header {
+    display: flex;
+    justify-content: center;
+}
+
 .upload-form__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-/* Title */
-.upload-form__title {
-    font-size: 20px;
-    color: #e0e0e0;
-}
-
-/* Form section */
 .upload-form__form {
     margin-top: 15px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    max-width: 100%;
 }
 
 .upload-form__group {
@@ -68,76 +124,90 @@ input {
     flex-direction: column;
 }
 
-/* Button */
-.upload-form__button {
-    background-color: #1e88e5; /* Electric blue */
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    max-width: 300px;
-    margin-top: 10px;
+
+/* -------------------------------------
+   Typography
+   - Titles and messages
+------------------------------------- */
+
+.upload-form__title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+    letter-spacing: 0.5px;
 }
 
-.upload-form__button:hover {
-    background-color: #1565c0; /* Stronger blue */
-}
-
-/* Messages block */
+/* Error messages list */
 .upload-form__messages {
-    margin-top: 15px;
     list-style: none;
     padding: 0;
 }
 
-/* Individual message */
+/* Single error message */
 .upload-form__message {
-    color: #fdd835; /* Golden yellow for warnings/errors */
+    color: var(--warning-color);
 }
 
-/* Success message block */
+/* Success message containers */
 .upload-form__success {
     margin-top: 20px;
 }
 
-/* Success title */
 .upload-form__success-title {
-    color: #00c853; /* Vivid green */
+    color: var(--success-color);
+    font-size: var(--font-size-lg);
 }
 
-/* Success URL text */
 .upload-form__success-url {
-    color: #e0e0e0;
+    color: var(--text-color);
 }
 
-/* Success link */
 .upload-form__success-link {
-    color: #81d4fa; /* Soft cyan/blue */
+    color: var(--link-color);
+    font-size: var(--font-size-sm);
 }
 
-/* --- Additional empty classes for future styling --- */
 
-/*
-.upload-form__form-group {
-}
-.upload-form__input {
-}
-upload-form__footer {
-}
-*/
+/* -------------------------------------
+   Buttons
+   - Main submit button
+------------------------------------- */
 
-/* --- Media Queries for Tablets and Desktops --- */
+.upload-form__button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-button);
+    cursor: pointer;
+    margin: var(--button-spacing-y) 0;
+    padding: var(--button-spacing-y) 0;
+    width: 100%;
+    font-size: var(--font-size-md);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.upload-form__button:hover {
+    box-shadow: 0 4px 12px var(--glow-color-hover);
+    transform: translateY(-2px);
+}
+
+
+/* -------------------------------------
+   Responsive Design
+   - Layout adjustments for tablets and desktops
+------------------------------------- */
 
 /* Tablets */
 @media (min-width: 600px) {
     .upload-form {
-        width: 70%;
+        width: 50%;
     }
 
     .upload-form__title {
-        font-size: 26px;
+        font-size: var(--font-size-lg);
     }
 
     .upload-form__button {
@@ -152,10 +222,27 @@ upload-form__footer {
     }
 
     .upload-form__title {
-        font-size: 28px;
+        font-size: var(--font-size-xl);
     }
 
     .upload-form__button {
         max-width: 500px;
     }
 }
+
+
+/* -------------------------------------
+   Unused / Future Elements
+   - Reserved for future use if needed
+------------------------------------- */
+
+/*
+.upload-form__form-group {
+}
+
+.upload-form__input {
+}
+
+.upload-form__footer {
+}
+*/
